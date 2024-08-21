@@ -1,0 +1,7 @@
+table tr td {
+    vertical-align: middle;
+}
+
+td button {
+    margin: 7px;
+}
