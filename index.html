@@ -18,9 +18,11 @@
     <section class="p-3">
         <div class="row">
             <div class="col-12">
-                <button class="btn btn-primary">
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
                     New user <i class="bi bi-people"></i>
-                </button>
+                  </button>
+
             </div>
         </div>
 
@@ -124,9 +126,67 @@
                 </div>
             </div>
 
-       
-        
     </section>
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <h4 class="modal-title">Fill in the form</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+  
+        <div class="modal-body">
+
+          <form action="" id="myform">
+            
+            <div class="card imgHolder">
+                <label for ="imgInput" class="upLoad">
+                    <input type="file" name=" " id="imgInput">
+                    <i class="bi bi-plus-circle"></i>
+                    
+                </label>
+
+                <img width="50" height="50" src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/24/external-user-date-and-time-tanah-basah-basic-outline-tanah-basah.png"
+                     alt="external-user-date-and-time-tanah-basah-basic-outline-tanah-basah"/>
+            </div>
+
+            <div class="inputfield">
+                <div class="">
+                    
+                </div>
+            </div>
+
+          </form>
+
+
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+<!-- 
+
+    <div class="modal fade" id="userForm">
+        <div class="modal-dailog modal-dailog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Fill in the form</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+
+
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
 
 
 
