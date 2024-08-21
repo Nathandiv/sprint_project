@@ -3,5 +3,9 @@ table tr td {
 }
 
 td button {
-    margin: 7px;
+    margin: 6px;
+}
+
+td button i {
+    font-size: 15px;
 }
