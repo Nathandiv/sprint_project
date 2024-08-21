@@ -39,8 +39,17 @@ cursor: pointer;
 
 }
 
+.upLoad i {
+    color: #fff;
+    font-size: 35px;
+}
+
 .imgHolder .upLoad input{
     display: none;
+}
+
+.imgHolder :hover .upLoad {
+    display: flex;
 }
 
 .imgHolder .upLoad {
@@ -57,4 +66,25 @@ cursor: pointer;
     border-left: 5px groove blue;
     padding-left: 20px;
 
+}
+
+form .inputfield > div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+form .inputfield > div label {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+form .inputfield > div input {
+    width: 70%;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #0d6efd ;
 }
