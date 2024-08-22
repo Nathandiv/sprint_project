@@ -97,7 +97,7 @@
 
              
 
-                 
+                 </tbody>
                     </table>
                 </div>
             </div>
@@ -167,11 +167,20 @@
 
         </div>
   
-        <div class="modal-footer">
-            <button type="submit" form="myform" class="btn btn-success" submit>Submit</button>
+        <!-- <div class="modal-footer">
+            <button type="submit" form="myform" class="btn btn-success" submit onclick="add()">Submit</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" id="submitBtn" onclick="addOrUpdate()">Submit</button>
 
+
+        </div> -->
+        <!-- Modal Footer with dynamic submit button -->
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" id="submitBtn" onclick="addOrUpdate()">Submit</button>
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
+        
+
   
       </div>
     </div>

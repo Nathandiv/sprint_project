@@ -1,0 +1,30 @@
+{
+  "name": "crud2-nathan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js"
+  },
+  "keywords": [
+    "backend",
+    "backend script",
+    "http",
+    "https",
+    "delete",
+    "put",
+    "get",
+    "post",
+    "nodemon",
+    "crud"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0",
+    "nodemon": "^3.1.4"
+  }
+}

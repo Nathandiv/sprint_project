@@ -1,101 +1,130 @@
-let data = JSON.parse(localStorage.getItem('data')) || [];
-loadTasksFromLocStorage();
-readAll();
+// Function to read all employees from the backend and populate the table
+async function readAll() {
+    try {
+        const response = await fetch('http://localhost:3002/get');
+        const data = await response.json();
 
-function loadTasksFromLocStorage() {
-    const savedData = localStorage.getItem('data');
-    if (savedData) {
-        data = JSON.parse(savedData);
+        let tData = document.getElementById('data');
+        let elements = "";
+
+        data.forEach((d) => {
+            elements += `
+                <tr>
+                    <td>${d.id}</td>
+                    <td>${d.name}</td>
+                    <td>${d.employee_code}</td>
+                    <td>${d.salary}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="edit(${d.id})" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <button class="btn btn-danger" onclick="del(${d.id})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `;
+        });
+        tData.innerHTML = elements;
+    } catch (error) {
+        console.error('Error fetching data:', error);
     }
 }
+async function addOrUpdate() {
+    const id = document.getElementById('id').value;
+    const name = document.getElementById('name').value;
+    const employee_code = document.getElementById('employee_code').value;
+    const salary = Number(document.getElementById('salary').value);
 
-function readAll() {
-    let tData = document.getElementById('data');
-    let elements = "";
-    data.forEach((d, index) => {
-        elements += `
-            <tr>
-                <td>${d.id}</td>
-                <td>${d.name}</td>
-                <td>${d.employee_code}</td>
-                <td>${d.salary}</td>
-                <td>
-                    <button class="btn btn-primary" onclick="edit(${index})">
-                        <i class="bi bi-pencil-square"></i>
-                    </button>
-                    <button class="btn btn-danger" onclick="del(${index})">
-                        <i class="bi bi-trash"></i>
-                    </button>
-                </td>
-            </tr>
-        `;
-    });
-    tData.innerHTML = elements;
-}
-
-function add() {
-    let id = document.getElementById('id').value;
-    let name = document.getElementById('name').value;
-    let employee_code = document.getElementById('employee_code').value;
-    let salary = Number(document.getElementById('salary').value);
+    console.log("ID:", id);
+    console.log("Name:", name);
+    console.log("Employee Code:", employee_code);
+    console.log("Salary:", salary);
 
     if (id.trim() !== '' && name.trim() !== '' && employee_code.trim() !== '' && salary !== 0) {
-        let newObject = { id, name, employee_code, salary };
-        data.push(newObject);
-        localStorage.setItem('data', JSON.stringify(data));
+        const newObject = { id, name, employee_code, salary };
+        const submitBtn = document.getElementById('submitBtn');
 
-        readAll();
-
-        document.getElementById('id').value = '';
-        document.getElementById('name').value = '';
-        document.getElementById('employee_code').value = '';
-        document.getElementById('salary').value = '';
+        try {
+            if (submitBtn.getAttribute('data-mode') === 'add') {
+                console.log("Sending POST request...");
+                const response = await fetch('http://localhost:3002/post', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newObject)
+                });
+                console.log("Response:", response);
+            } else if (submitBtn.getAttribute('data-mode') === 'edit') {
+                console.log("Sending PUT request...");
+                const response = await fetch(`http://localhost:3002/put/${id}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newObject)
+                });
+                console.log("Response:", response);
+            }
+            resetForm();
+            readAll();
+        } catch (error) {
+            console.error('Error submitting data:', error);
+        }
     } else {
         alert('Please fill in all required fields!');
     }
 }
 
-function edit(index) {
-    let idInput = document.getElementById('id');
-    let nameInput = document.getElementById('name');
-    let employee_codeInput = document.getElementById('employee_code');
-    let salaryInput = document.getElementById('salary');
 
-    idInput.value = data[index].id;
-    nameInput.value = data[index].name;
-    employee_codeInput.value = data[index].employee_code;
-    salaryInput.value = data[index].salary;
 
-    let addButton = document.getElementById('addButton');
-    addButton.innerHTML = 'Update';
-    addButton.onclick = function() {
-        update(index);
-    };
-}
-
-function update(index) {
-    data[index].id = document.getElementById('id').value;
-    data[index].name = document.getElementById('name').value;
-    data[index].employee_code = document.getElementById('employee_code').value;
-    data[index].salary = Number(document.getElementById('salary').value);
-
-    localStorage.setItem('data', JSON.stringify(data));
-    readAll();
-
+// Function to reset the form to its initial state
+function resetForm() {
     document.getElementById('id').value = '';
     document.getElementById('name').value = '';
     document.getElementById('employee_code').value = '';
     document.getElementById('salary').value = '';
 
-    let addButton = document.getElementById('addButton');
-    addButton.innerHTML = 'Add';
-    addButton.onclick = add;
+    const submitBtn = document.getElementById('submitBtn');
+    submitBtn.innerHTML = 'Submit';
+    submitBtn.setAttribute('data-mode', 'add');
+    submitBtn.onclick = addOrUpdate;
 }
 
-function del(index) {
-    if (index >= 0 && index < data.length) {
-        data.splice(index, 1);
-        localStorage.setItem('data', JSON.stringify(data));
-        readAll();
+// Function to edit an employee's details
+async function edit(id) {
+    try {
+        const response = await fetch(`http://localhost:3002/get/${id}`);
+        const data = await response.json();
+
+        if (data.length > 0) {
+            const employee = data[0];
+            document.getElementById('id').value = employee.id;
+            document.getElementById('name').value = employee.name;
+            document.getElementById('employee_code').value = employee.employee_code;
+            document.getElementById('salary').value = employee.salary;
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerHTML = 'Update';
+            submitBtn.setAttribute('data-mode', 'edit');
+            submitBtn.onclick = addOrUpdate;
+        }
+    } catch (error) {
+        console.error('Error fetching employee data:', error);
     }
 }
+
+// Function to delete an employee
+async function del(id) {
+    try {
+        await fetch(`http://localhost:3002/delete/${id}`, {
+            method: 'DELETE'
+        });
+        readAll();
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+}
+
+// Reset form and button state when the modal is hidden
+document.getElementById('myModal').addEventListener('hidden.bs.modal', resetForm);
+
+// Initialize the table with the current data
+readAll();
