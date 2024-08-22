@@ -75,6 +75,7 @@ async function addOrUpdate() {
 
 
 
+
 // Function to reset the form to its initial state
 function resetForm() {
     document.getElementById('id').value = '';
