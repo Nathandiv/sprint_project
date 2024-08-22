@@ -31,31 +31,31 @@
                <table class="table table-striped table-hover mt-3 text-center table-bordered">
                 <thead>
                     <tr>
-                        <th>E.No</th>
-                        <th>Picture</th>
+                        <th>id</th>
+                        <!-- <th>Picture</th> -->
                         <th>Name</th>
-                        <th>Position</th>
-                        <th>City</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>employee_code</th>
+                        <th>salary</th>
+                        <!-- <th>Phone</th> -->
+                        <!-- <th>Email</th> -->
                         <th>Action</th>
                     </tr>
                 </thead>
 
                 <tbody id="data">
                     <tr>
-                        <td>0951</td>
-                        <td><img src="https://yt3.ggpht.com/yti/ANjgQV9o3bgbf8mbUYpgcLyi-c1xy_tfR_eCgkXSvbixGel9Z3g=s108-c-k-c0x00ffffff-no-rj" width="50" height="50"></td>
+                        <td>1</td>
+                        <!-- <td><td src="https://yt3.ggpht.com/yti/ANjgQV9o3bgbf8mbUYpgcLyi-c1xy_tfR_eCgkXSvbixGel9Z3g=s108-c-k-c0x00ffffff-no-rj" width="50" height="50"></td> -->
                         <td>Nathan Hlungwani</td>
-                        <td>Full Sack Programmer</td>
-                        <td>Cape Town</td>
-                        <td>0764715965</td>
-                        <td>k.n.hlungwani@gmail.com</td>
+                        <td>0951</td>
+                        <!-- <td>Cape Town</td> -->
+                        <td>25000</td>
+                        <!-- <td>k.n.hlungwani@gmail.com</td> -->
                         <td>
 
-                            <button class="btn btn-success">
+                            <!-- <button class="btn btn-success">
                                 <i class="bi bi-eye"></i>
-                            </button>
+                            </button> -->
         
                             <button class="btn btn-primary">
                                 <i class="bi bi-pencil-square"></i>
@@ -70,18 +70,18 @@
                     </tr>
 
                     <tr>
-                        <td>2009</td>
-                        <td><img src="https://yt3.ggpht.com/yti/ANjgQV9o3bgbf8mbUYpgcLyi-c1xy_tfR_eCgkXSvbixGel9Z3g=s108-c-k-c0x00ffffff-no-rj" width="50" height="50"></td>
+                        <td>2</td>
+                        <!-- <td><td src="https://yt3.ggpht.com/yti/ANjgQV9o3bgbf8mbUYpgcLyi-c1xy_tfR_eCgkXSvbixGel9Z3g=s108-c-k-c0x00ffffff-no-rj" width="50" height="50"></td> -->
                         <td>Khosatho Mono</td>
-                        <td>Full Sack Programmer</td>
-                        <td>Durban</td>
-                        <td>0788692921</td>
-                        <td>Monok@gmail.com</td>
+                        <td>2009</td>
+                        <td>20000</td>
+                        <!-- <td>0788692921</td> -->
+                        <!-- <td>Monok@gmail.com</td> -->
                         <td>
-
+<!-- 
                             <button class="btn btn-success">
                                 <i class="bi bi-eye"></i>
-                            </button>
+                            </button> -->
         
                             <button class="btn btn-primary">
                                 <i class="bi bi-pencil-square"></i>
@@ -95,31 +95,7 @@
                         </td>
                     </tr>
 
-                    <tr>
-                        <td>0954</td>
-                        <td><img src="https://yt3.ggpht.com/yti/ANjgQV9o3bgbf8mbUYpgcLyi-c1xy_tfR_eCgkXSvbixGel9Z3g=s108-c-k-c0x00ffffff-no-rj" width="50" height="50"></td>
-                        <td>Jack Mokoena</td>
-                        <td>Full Sack Programmer</td>
-                        <td>Johannesburg</td>
-                        <td>0625736574</td>
-                        <td>jackmokoena@gmail.com</td>
-                        <td>
-
-                            <button class="btn btn-success">
-                                <i class="bi bi-eye"></i>
-                            </button>
-        
-                            <button class="btn btn-primary">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-        
-                            <button class="btn btn-danger">
-                                <i class="bi bi-trash"></i>
-                            </button>
-        
-        
-                        </td>
-                    </tr>
+             
 
                  
                     </table>
@@ -141,7 +117,7 @@
 
           <form action="" id="myform">
             
-            <div class="card imgHolder">
+            <!-- <div class="card imgHolder">
                 <label for ="imgInput" class="upLoad">
                     <input type="file" name=" " id="imgInput">
                     <i class="bi bi-plus-circle"></i>
@@ -150,34 +126,40 @@
 
                 <img width="150" height="150" src="https://img.icons8.com/external-tanah-basah-basic-outline-tanah-basah/24/external-user-date-and-time-tanah-basah-basic-outline-tanah-basah.png"
                      alt="external-user-date-and-time-tanah-basah-basic-outline-tanah-basah"/>
-            </div>
+            </div> -->
 
             <div class="inputfield">
+
+                <div class="">
+                    <label for="name">id :</label>
+                    <input type="text" id="id">
+                </div>
+
                 <div class="">
                     <label for="name">Name :</label>
                     <input type="text" id="name">
                 </div>
 
                 <div class="">
-                    <label for="position">Position :</label>
-                    <input type="text" id="position">
+                    <label for="position">employee_code :</label>
+                    <input type="number" id="employee_code">
                 </div>
 
 
                 <div class="">
-                    <label for="city">City :</label>
-                    <input type="text" id="city">
+                    <label for="city">salary :</label>
+                    <input type="number" id="salary">
                 </div>
 
-                <div class="">
+                <!-- <div class="">
                     <label for="phone">Phone :</label>
                     <input type="number" id="phone" minlength="11" maxlength="13">
-                </div>
-
+                </div> -->
+<!-- 
                 <div class="">
                     <label for="email">E-mail :</label>
                     <input type="email" id="email">
-                </div>
+                </div> -->
             </div>
 
           </form>

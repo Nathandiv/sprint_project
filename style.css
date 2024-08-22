@@ -63,8 +63,8 @@ cursor: pointer;
 
 .modal-body form .inputfield{
     flex-basis: 68%;
-    border-left: 5px groove blue;
-    padding-left: 20px;
+    /* border-left: 5px groove blue;
+    padding-left: 20px; */
 
 }
 
