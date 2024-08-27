@@ -76,7 +76,7 @@ async function addOrUpdate() {
 
 
 
-// Function to reset the form to its initial state
+// reset 
 function resetForm() {
     document.getElementById('id').value = '';
     document.getElementById('name').value = '';
@@ -89,7 +89,7 @@ function resetForm() {
     submitBtn.onclick = addOrUpdate;
 }
 
-// Function to edit an employee's details
+//  edit 
 async function edit(id) {
     try {
         const response = await fetch(`http://localhost:3002/get/${id}`);
@@ -112,7 +112,7 @@ async function edit(id) {
     }
 }
 
-// Function to delete an employee
+// delete
 async function del(id) {
     try {
         await fetch(`http://localhost:3002/delete/${id}`, {
@@ -124,8 +124,6 @@ async function del(id) {
     }
 }
 
-// Reset form and button state when the modal is hidden
 document.getElementById('myModal').addEventListener('hidden.bs.modal', resetForm);
 
-// Initialize the table with the current data
 readAll();
